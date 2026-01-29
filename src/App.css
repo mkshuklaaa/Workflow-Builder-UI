@@ -1,0 +1,242 @@
+/* RESET */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  color: #e5e7eb;
+
+  background: linear-gradient(
+    120deg,
+    #020617,
+    #020617,
+    #020617,
+    #020617
+  );
+  background-size: 300% 300%;
+  animation: bgMove 12s ease infinite;
+}
+
+@keyframes bgMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+/* APP */
+.app {
+  padding: 30px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.canvas {
+  display: flex;
+  justify-content: center;
+  padding: 60px 20px 100px;
+  overflow-x: auto;
+}
+
+.canvas-inner {
+  display: flex;
+  justify-content: center;
+  min-width: max-content;
+}
+
+
+
+
+/* NODE TREE */
+.node-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;  /* CENTER children under parent */
+  position: relative;
+}
+
+
+/* CHILDREN FLOW */
+.children {
+  display: flex;
+  gap: 50px;
+  margin-top: 40px;
+  position: relative;
+}
+
+/* CONNECTION LINE */
+.children::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  width: 2px;
+  height: 20px;
+  background: #64748b;
+}
+
+/* NODE CARD */
+.node {
+  width: 260px;
+  padding: 16px;
+  border-radius: 16px;
+
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.5),
+    inset 0 0 0 rgba(255,255,255,0);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.node:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow:
+    0 30px 70px rgba(0, 0, 0, 0.7),
+    inset 0 0 40px rgba(255,255,255,0.05);
+}
+
+
+.node:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+}
+
+/* NODE TYPES */
+.node.start {
+  border-left: 6px solid #22d3ee;
+  box-shadow:
+    0 0 20px rgba(34, 211, 238, 0.6),
+    0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+
+.node.action {
+  border-left: 6px solid #6366f1;
+}
+
+.node.branch {
+  border-left: 6px solid #f59e0b;
+}
+
+.node.end {
+  border-left: 6px solid #ef4444;
+}
+
+/* INPUT */
+.node input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #94a3b8;
+  color: #e5e7eb;
+  font-size: 15px;
+  padding: 6px 4px;
+  outline: none;
+  margin-bottom: 12px;
+}
+
+.node input:focus {
+  border-color: #38bdf8;
+}
+
+/* BUTTONS */
+.node button {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #e5e7eb;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  cursor: pointer;
+  margin: 4px 3px;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.node button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+/* DELETE BUTTON */
+.node .delete {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.5);
+}
+
+.node .delete:hover {
+  background: rgba(239, 68, 68, 0.35);
+}
+
+.children {
+  display: flex;
+  gap: 60px;
+  margin-top: 50px;
+  position: relative;
+}
+
+.children::before {
+  content: "";
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  width: 2px;
+  height: 30px;
+  background: linear-gradient(
+    to bottom,
+    rgba(148,163,184,0.8),
+    rgba(148,163,184,0.1)
+  );
+}
+.badge {
+  font-size: 11px;
+  opacity: 0.7;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+  display: inline-block;
+}
+
+.node button {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #e5e7eb;
+  padding: 6px 12px;
+  border-radius: 10px;
+  font-size: 12px;
+  cursor: pointer;
+  margin: 4px;
+  transition: all 0.2s ease;
+}
+
+.node button:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+.node {
+  animation: popIn 0.3s ease;
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
