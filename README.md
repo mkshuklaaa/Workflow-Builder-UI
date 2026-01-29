@@ -50,6 +50,7 @@ This project focuses on evaluating:
 
 ## 🧠 Architecture
 
+```
 src/
 ├── components/
 │ ├── WorkflowCanvas.jsx # Canvas container
@@ -62,6 +63,7 @@ src/
 ├── App.jsx # Root component
 ├── main.jsx # Entry point
 └── styles.css # Global styles
+```
 
 
 ---
@@ -91,7 +93,7 @@ Navigate into the project
 ```cd Workflow-Builder-UI```
 
 Install dependencies
-npm install
+```npm install```
 
 Start development server
 ```npm run dev```
