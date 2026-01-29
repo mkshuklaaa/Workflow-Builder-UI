@@ -84,16 +84,16 @@ The workflow is stored as a **normalized structure**:
 }
 ```
 ## 🛠️ Installation & Setup
-# Clone the repository
-git clone https://github.com/mkshuklaaa/Workflow-Builder-UI.git
+Clone the repository
+```git clone https://github.com/mkshuklaaa/Workflow-Builder-UI.git```
 
-# Navigate into the project
-cd Workflow-Builder-UI
+Navigate into the project
+```cd Workflow-Builder-UI```
 
-# Install dependencies
+Install dependencies
 npm install
 
-# Start development server
+Start development server
 ```npm run dev```
-#Open in browser:
+Open in browser:
 ```http://localhost:5173```
