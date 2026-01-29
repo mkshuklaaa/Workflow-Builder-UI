@@ -1,174 +1,99 @@
-#!/usr/bin/env bash
-
-# ============================================================
 # Workflow Builder UI
-# Frontend Intern Take-Home Assignment
-# ============================================================
 
-# ------------------------------------------------------------
-# Overview
-# ------------------------------------------------------------
-# Workflow Builder UI is a single-page React application that
-# allows users to visually create, edit, and manage workflows.
-#
-# The application represents workflows as a tree of nodes
-# where each node can be an Action, Branch, or End.
-#
-# The focus of this project is:
-# - Data modeling
-# - Component architecture
-# - State management
-# - User experience (UX)
-#
-# No UI libraries or workflow/diagram libraries are used.
-# All layout, styling, and interactions are built from scratch.
-# ------------------------------------------------------------
+A **visual workflow builder** built with React that allows users to create, edit, and manage workflow trees interactively — without using any external UI or workflow/diagram libraries.
 
+🔗 **Repository**: https://github.com/mkshuklaaa/Workflow-Builder-UI.git
 
-# ------------------------------------------------------------
-# Tech Stack
-# ------------------------------------------------------------
-# - React (Functional Components + Hooks)
-# - JavaScript (ES6+)
-# - Vite (Development Server)
-# - CSS (Pure CSS, no frameworks)
-# ------------------------------------------------------------
+---
 
+## 🚀 Overview
 
-# ------------------------------------------------------------
-# Features
-# ------------------------------------------------------------
-# - Visual workflow canvas
-# - Start node initialized by default
-# - Supports three node types:
-#     1. Action  -> single outgoing connection
-#     2. Branch  -> multiple outgoing connections
-#     3. End     -> no outgoing connections
-#
-# - Add nodes dynamically
-# - Delete nodes with automatic reconnection
-# - Edit node labels inline
-# - Recursive rendering for unlimited depth
-# - Centered canvas layout
-# - Smooth UI transitions and animations
-# - Glassmorphism, modern UI design
-# ------------------------------------------------------------
+Workflow Builder UI is a **single-page application** designed to visually represent workflows as a connected set of nodes.  
+Users can dynamically add, edit, and delete steps while maintaining a continuous flow.
 
+This project focuses on evaluating:
+- Data modeling
+- Component architecture
+- State management
+- User experience (UX)
+- Core React and CSS skills
 
-# ------------------------------------------------------------
-# Project Structure
-# ------------------------------------------------------------
-# src/
-# ├── components/
-# │   ├── WorkflowCanvas.jsx   # Canvas wrapper
-# │   ├── NodeRenderer.jsx     # Recursive tree renderer
-# │   └── NodeCard.jsx         # Node UI and interactions
-# │
-# ├── utils/
-# │   └── workflowActions.js   # Add, delete, update logic
-# │
-# ├── App.jsx                  # Root component
-# ├── main.jsx                 # App entry point
-# └── styles.css               # Global styling
-# ------------------------------------------------------------
+> ⚠️ No UI libraries (Material UI, Chakra, etc.)  
+> ⚠️ No workflow/diagram libraries (React Flow, GoJS, etc.)
+
+---
+
+## ✨ Features
+
+### 🧩 Workflow Canvas
+- Starts with a **root “Start” node**
+- Nodes are displayed in a centered, vertical flow layout
+- Recursive rendering supports unlimited depth
+
+### 🧱 Supported Node Types
+
+| Node Type | Description | Outgoing Connections |
+|----------|------------|----------------------|
+| **Start** | Root of workflow | 1 |
+| **Action** | Single task/step | 1 |
+| **Branch** | Conditional decision point | Multiple |
+| **End** | Final step | 0 |
+
+### ✏️ Editing & Interaction
+- Add **Action**, **Branch**, or **End** nodes
+- Inline editing of node labels
+- Delete nodes with automatic reconnection
+- Smooth animations and hover effects
+- Modern, eye-catching UI using pure CSS
+
+---
+
+## 🧠 Architecture
+
+src/
+├── components/
+│ ├── WorkflowCanvas.jsx # Canvas container
+│ ├── NodeRenderer.jsx # Recursive tree renderer
+│ └── NodeCard.jsx # Node UI & actions
+│
+├── utils/
+│ └── workflowActions.js # Add, update, delete logic
+│
+├── App.jsx # Root component
+├── main.jsx # Entry point
+└── styles.css # Global styles
 
 
-# ------------------------------------------------------------
-# Data Model
-# ------------------------------------------------------------
-# The workflow is stored as a normalized object:
-#
-# {
-#   rootId: "start",
-#   nodes: {
-#     start: {
-#       id: "start",
-#       type: "START",
-#       label: "Start",
-#       children: []
-#     }
-#   }
-# }
-#
-# This approach avoids deep nesting and allows efficient updates.
-# ------------------------------------------------------------
+---
 
+## 📊 Data Model
 
-# ------------------------------------------------------------
-# Core Concepts
-# ------------------------------------------------------------
-# - Recursive Rendering:
-#   Nodes are rendered using recursion to support infinite depth.
-#
-# - Centralized State:
-#   Workflow state is stored at the App level and passed down.
-#
-# - Pure State Updates:
-#   All mutations are handled using functional updates.
-#
-# - UX-First Design:
-#   Clean layout, centered flow, subtle animations.
-# ------------------------------------------------------------
+The workflow is stored as a **normalized structure**:
 
+```js
+{
+  rootId: "start",
+  nodes: {
+    start: {
+      id: "start",
+      type: "START",
+      label: "Start",
+      children: []
+    }
+  }
+}
+```
+## 🛠️ Installation & Setup
+# Clone the repository
+git clone https://github.com/mkshuklaaa/Workflow-Builder-UI.git
 
-# ------------------------------------------------------------
-# Installation & Setup
-# ------------------------------------------------------------
-# 1. Clone the repository
-#    git clone https://github.com/mkshuklaaa/Workflow-Builder-UI.git
-#
-# 2. Navigate to the project directory
-#    cd Workflow-Builder-UI
-#
-# 3. Install dependencies
-#    npm install
-#
-# 4. Start development server
-#    npm run dev
-#
-# 5. Open in browser
-#    http://localhost:5173
-# ------------------------------------------------------------
+# Navigate into the project
+cd Workflow-Builder-UI
 
+# Install dependencies
+npm install
 
-# ------------------------------------------------------------
-# How Node Deletion Works
-# ------------------------------------------------------------
-# - When a node is deleted:
-#   - The node is removed from the workflow
-#   - Its parent automatically connects to its children
-#   - This preserves workflow continuity
-#
-# This logic ensures the flow never breaks.
-# ------------------------------------------------------------
-
-
-# ------------------------------------------------------------
-# Design Decisions
-# ------------------------------------------------------------
-# - No external UI libraries to demonstrate core CSS skills
-# - No workflow libraries to show understanding of rendering logic
-# - Normalized data structure for scalability
-# - Clear separation between UI and business logic
-# ------------------------------------------------------------
-
-
-# ------------------------------------------------------------
-# Future Improvements
-# ------------------------------------------------------------
-# - True/False branch labeling
-# - SVG curved connection lines
-# - Zoom and pan support
-# - Save/load workflow as JSON
-# - Keyboard shortcuts
-# ------------------------------------------------------------
-
-
-# ------------------------------------------------------------
-# Author
-# ------------------------------------------------------------
-# Manish Kumar Shukla
-# Frontend / Full Stack Developer
-# ------------------------------------------------------------
-
-echo "Workflow Builder UI README loaded successfully"
+# Start development server
+```npm run dev```
+#Open in browser:
+```http://localhost:5173```
